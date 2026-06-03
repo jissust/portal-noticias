@@ -1,13 +1,9 @@
 "use client";
 import Link from "next/link";
-import { FaInstagram, FaWhatsapp, FaPhone, FaMailBulk } from "react-icons/fa";
 import { NavLinks } from "@/components/ui/navigation/NavLink";
+import { SocialNetworks } from "@/components/ui/socialNetworks/SocialNetworks";
 
 export const Footer = () => {
-  const handleContactClick = (method: string) => {
-    console.log(method);
-    //sendGTMEvent({ event: "contact_click", method, location: "footer" });
-  };
   return (
     <footer className="w-full bg-black text-white">
       <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -25,45 +21,8 @@ export const Footer = () => {
 
         <div>
           <h2 className="pb-4 font-semibold text-lg text-center">UBICACIÓN</h2>
-          <div className="flex gap-4 text-center pb-8 justify-center">
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gray-300 text-xl"
-              onClick={() => handleContactClick("instagram")}
-            >
-              <FaInstagram />
-            </a>
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gray-300 text-xl"
-              onClick={() => handleContactClick("whatsapp")}
-            >
-              <FaWhatsapp />
-            </a>
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gray-300"
-              onClick={() => handleContactClick("phone")}
-            >
-              <FaPhone />
-            </a>
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gray-300 text-xl"
-              onClick={() => handleContactClick("email")}
-            >
-              <FaMailBulk />
-            </a>
-          </div>
-          <h2 className="pt-4 font-semibold text-lg text-center border-t-1">
+          <SocialNetworks />
+          <h2 className="pt-4 mt-8 font-semibold text-lg text-center border-t-1">
             UBICACIÓN
           </h2>
           <p className="text-sm text-center">DIRECCIÓN</p>
@@ -73,7 +32,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center border-t pt-6">
           {/* Columna izquierda */}
           <div className="text-sm text-center md:text-left font-semibold">
-            © {new Date().getFullYear()} UMO FIRE & STEAKHOUSE
+            © {new Date().getFullYear()} EMPRESA
           </div>
 
           {/* Columna derecha */}
