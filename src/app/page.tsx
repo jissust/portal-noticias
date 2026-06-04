@@ -1,8 +1,9 @@
-import Image from "next/image";
 import { Hero } from "@/components/features/home/Hero/Hero";
+import { LatestNews } from "@/components/features/home/LatestNews/LatestNews";
 
-const heroSlides = [
+const news = [
   {
+    id: 1,
     src: "/images/hero/hero-1.jpg",
     href: "/noticias/san-lorenzo-gano",
     category: "Liga Profesional",
@@ -11,6 +12,7 @@ const heroSlides = [
     date: "14 de junio de 2026",
   },
   {
+    id: 2,
     src: "/images/hero/hero-2.jpg",
     href: "/noticias/mercado-de-pases",
     category: "Mercado de pases",
@@ -19,6 +21,7 @@ const heroSlides = [
     date: "13 de junio de 2026",
   },
   {
+    id: 3,
     src: "/images/hero/hero-3.jpg",
     href: "/noticias/copa-argentina",
     category: "Copa Argentina",
@@ -31,8 +34,9 @@ const heroSlides = [
 export default function Home() {
   return (
     <>
-      <Hero slides={heroSlides} />
+      <Hero slides={news} />
+      <LatestNews news={news} />
     </>
-
+  
   );
 }
