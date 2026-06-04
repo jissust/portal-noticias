@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 
 export interface HeroSlide {
   src: string;
-  href: string;
-  category: string;
-  title: string;
-  text: string;
-  date: string;
+  href?: string;
+  category?: string;
+  title?: string;
+  text?: string;
+  date?: string;
 }
 
 export interface HeroProps {
@@ -34,50 +34,63 @@ export const Hero = ({ slides }: HeroProps) => {
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
-      <Link href={slide.href}>
+      
         <div className="absolute inset-0">
-          {slides.map((slide, index) => (
+            {slides.map((slide, index) => (
             <Image
-              key={slide.src}
-              src={slide.src}
-              alt={slide.title}
-              fill
-              priority={index === 0}
-              className={`
-              absolute inset-0 object-cover
-              transition-all duration-1000 ease-in-out
-              ${
+                key={slide.src}
+                src={slide.src}
+                alt={slide.title || "Hero image"}
+                fill
+                priority={index === 0}
+                className={`
+                absolute inset-0 object-cover
+                transition-all duration-1000 ease-in-out
+                ${
                 current === index
-                  ? "opacity-100 scale-105"
-                  : "opacity-0 scale-100"
-              }
+                    ? "opacity-100 scale-105"
+                    : "opacity-0 scale-100"
+                }
             `}
             />
-          ))}
+            ))}
         </div>
-      </Link>
+      
 
       <div className="absolute inset-0 bg-black/40" />
 
       <div className="absolute bottom-0 left-0 right-0 z-10">
         <div className="container mx-auto px-6 pb-16">
           <div className="max-w-4xl">
-            <span className="inline-block px-3 py-1 rounded-full bg-red-600 text-white text-xs md:text-sm uppercase font-semibold">
-              {slide.category}
-            </span>
+            {slide.category && (
+              <span className="inline-block px-3 py-1 rounded-full bg-red-600 text-white text-xs md:text-sm uppercase font-semibold">
+                {slide.category}
+              </span>
+            )}
 
-            <h1 className="mt-4 text-white text-3xl md:text-5xl font-bold">
-              {slide.title}
-            </h1>
+            { slide.title && (
+              <h1 className="mt-4 text-white text-3xl md:text-5xl font-bold">
+                {slide.href ? (
+                  <Link href={slide.href || "#"} className="hover:underline">
+                    {slide.title}
+                  </Link>
+                ) : (
+                slide.title
+              )}
+            </h1>)}
 
-            <p className="mt-3 text-white/90 text-base md:text-lg">
-              {slide.text}
-            </p>
+            {slide.text && (
+              <p className="mt-3 text-white/90 text-base md:text-lg">
+                {slide.text}
+              </p>
+            )}
 
-            <span className="block mt-4 text-white/70 text-sm">
-              {slide.date}
-            </span>
-          </div>
+            {slide.date && (
+              <span className="block mt-4 text-white/70 text-sm">
+                {slide.date}
+              </span>
+            )}
+          </div>    
         </div>
       </div>
 
