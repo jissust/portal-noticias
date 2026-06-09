@@ -3,19 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
-export interface HeroSlide {
-  id?: number;
-  src: string;
-  href?: string;
-  category?: string;
-  title?: string;
-  text?: string;
-  date?: string;
-}
+import { News } from "@/types/news";
 
 export interface HeroProps {
-  slides: HeroSlide[];
+  slides: News[];
 }
 
 export const Hero = ({ slides }: HeroProps) => {
@@ -33,15 +24,23 @@ export const Hero = ({ slides }: HeroProps) => {
 
   const slide = slides[current];
 
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) return text;
+
+    const truncated = text.slice(0, maxLength);
+    return `${truncated.slice(0, truncated.lastIndexOf(" "))}...`;
+  };
+
   return (
     <section className="relative w-full h-screen overflow-hidden">
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
           <Image
-            key={slide.src}
-            src={slide.src}
+            key={slide.id}
+            src={`${process.env.NEXT_PUBLIC_API_URL}${slide.image?.url}`}
             alt={slide.title || "Hero image"}
             fill
+            unoptimized
             priority={index === 0}
             className={`
                 absolute inset-0 object-cover
@@ -69,22 +68,21 @@ export const Hero = ({ slides }: HeroProps) => {
 
             {slide.title && (
               <h1 className="mt-4 text-white text-3xl md:text-5xl font-bold">
-                {slide.href ? (
-                  <Link href={slide.href || "#"} className="hover:underline">
-                    {slide.title}
-                  </Link>
-                ) : (
-                  slide.title
-                )}
+                <Link
+                  href={`/noticias/${slide.documentId}`}
+                  className="hover:underline"
+                >
+                  {slide.title}
+                </Link>
               </h1>
             )}
 
             {slide.text && (
               <p className="mt-3 text-white/90 text-base md:text-lg">
-                {slide.text}
+                {truncateText(slide.text, 200)}
               </p>
             )}
-
+  
             {slide.date && (
               <span className="block mt-4 text-white/70 text-sm">
                 {slide.date}

@@ -1,20 +1,12 @@
 import { CardNew } from "@/components/ui/CardNew/CardNew";
-
-export interface New {
-  id?: number;
-  src: string;
-  href?: string;
-  category?: string;
-  title?: string;
-  text?: string;
-  date?: string;
-}
+import { News } from "@/types/news";
 
 export interface NewsProps {
-  news: New[];
+  news: News[];
 }
 
-export const LatestNews = ({ news }: NewsProps) => {
+export const LatestNews = async({ news }: NewsProps) => {
+
   return (
     <section className="w-full py-20">
       <div className="max-w-7xl mx-auto px-6">

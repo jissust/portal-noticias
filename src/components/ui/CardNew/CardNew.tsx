@@ -1,24 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-
-export interface NewsItem {
-  id?: number;
-  src: string;
-  href?: string;
-  category?: string;
-  title?: string;
-  text?: string;
-  date?: string;
-}
+import { News } from "@/types/news";
 
 type CardNewProps = {
-  new: NewsItem;
+  new: News;
 };
 
 export const CardNew = ({ new: news }: CardNewProps) => {
+  const urlImg = `${process.env.NEXT_PUBLIC_API_URL}${news?.image?.url}`;
   return (
     <Link
-      href={news.href || "#"}
+      href={`/news/${news.documentId || ""}`}
       className="
         group
         flex
@@ -36,9 +28,11 @@ export const CardNew = ({ new: news }: CardNewProps) => {
     >
       <div className="relative h-56 w-full overflow-hidden">
         <Image
-          src={news.src}
+          key={news.id}
+          src={urlImg}
           alt={news.title || ""}
           fill
+          unoptimized
           className="
             object-cover
             transition-transform
