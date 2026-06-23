@@ -6,11 +6,26 @@ const url = new URL(API_URL || "http://localhost:1337");
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
+      // Strapi
       {
         protocol: url.protocol.replace(":", "") as "http" | "https",
         hostname: url.hostname,
-        port: url.port || undefined, 
-        pathname: '/uploads/**',
+        port: url.port || undefined,
+        pathname: "/uploads/**",
+      },
+
+      // API Sports
+      {
+        protocol: "https",
+        hostname: "media.api-sports.io",
+        pathname: "/football/**",
+      },
+
+      // Si API Sports usa otras rutas
+      {
+        protocol: "https",
+        hostname: "media.api-sports.io",
+        pathname: "/**",
       },
     ],
   },
