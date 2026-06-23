@@ -30,7 +30,7 @@ export const upcomingMatchesMock = [
       home: {
         id: 434,
         name: "Racing Club",
-        logo: "https://media.api-sports.io/football/teams/434.png",
+        logo: "https://media.api-sports.io/football/teams/436.png",
       },
       away: {
         id: 460,
@@ -57,7 +57,7 @@ export const upcomingMatchesMock = [
       away: {
         id: 437,
         name: "Independiente",
-        logo: "https://media.api-sports.io/football/teams/437.png",
+        logo: "https://media.api-sports.io/football/teams/453.png",
       },
     },
     league: {
@@ -65,7 +65,7 @@ export const upcomingMatchesMock = [
       round: "Fecha 6",
     },
   },
-  {
+  /*{
     fixture: {
       id: 12348,
       date: "2026-07-10T01:15:00+00:00",
@@ -108,5 +108,5 @@ export const upcomingMatchesMock = [
       name: "Copa Argentina",
       round: "16avos de Final",
     },
-  },
+  },*/
 ];
