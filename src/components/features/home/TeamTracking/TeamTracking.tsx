@@ -1,6 +1,7 @@
 import { Standings } from "@/components/ui/Standings/Standings";
 import { MockStandings } from "@/mock/standings";
 import { UpcomingMatches } from "@/components/ui/UpcomingMatches/UpcomingMatches";
+import { RecentMatches } from "@/components/ui/RecentMatches/RecentMatches";
 
 export const TeamTracking = () => {
     const GroupA = MockStandings[0]?.league?.standings[0]; 
@@ -18,6 +19,9 @@ export const TeamTracking = () => {
             <br />
             <br />
             <UpcomingMatches />
+            <br />
+            <br />
+            <RecentMatches />
         </div>
       </section>
     </>
