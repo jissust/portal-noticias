@@ -1,5 +1,6 @@
 import { Standings } from "@/components/ui/Standings/Standings";
 import { MockStandings } from "@/mock/standings";
+import { UpcomingMatches } from "@/components/ui/UpcomingMatches/UpcomingMatches";
 
 export const TeamTracking = () => {
     const GroupA = MockStandings[0]?.league?.standings[0]; 
@@ -14,6 +15,9 @@ export const TeamTracking = () => {
             <br />
             <br />
             <Standings title="Grupo B" standings={GroupB} />
+            <br />
+            <br />
+            <UpcomingMatches />
         </div>
       </section>
     </>
