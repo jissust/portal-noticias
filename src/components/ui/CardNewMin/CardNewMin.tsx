@@ -6,7 +6,7 @@ type CardNewProps = {
   new: News;
 };
 
-export const CardNew = ({ new: news }: CardNewProps) => {
+export const CardNewMin = ({ new: news }: CardNewProps) => {
   const urlImg = `${process.env.NEXT_PUBLIC_API_URL}${news?.image?.url}`;
   return (
     <Link
@@ -14,19 +14,18 @@ export const CardNew = ({ new: news }: CardNewProps) => {
       className="
         group
         flex
-        flex-col
         overflow-hidden
-        rounded-lg
         bg-white
         shadow-md
         transition-all
         duration-300
         hover:-translate-y-1
         hover:shadow-xl
-        w-full sm:w-[320px] lg:w-[360px] 
+        w-full 
+        mb-4
       "
     >
-      <div className="relative h-56 w-full overflow-hidden">
+      <div className="relative w-[30%] overflow-hidden">
         <Image
           key={news.id}
           src={urlImg}
@@ -42,7 +41,7 @@ export const CardNew = ({ new: news }: CardNewProps) => {
         />
       </div>
 
-      <div className="flex flex-col gap-3 p-5">
+      <div className="flex flex-col gap-3 p-4 w-[70%]">
         {news.category && (
           <span className="text-sm font-semibold uppercase text-gold">
             {news.category}
@@ -51,7 +50,7 @@ export const CardNew = ({ new: news }: CardNewProps) => {
 
         <h2
           className="
-            text-xl
+            text-md
             font-bold
             leading-tight
             transition-colors
@@ -63,7 +62,7 @@ export const CardNew = ({ new: news }: CardNewProps) => {
         </h2>
 
         {news.text && (
-          <p className="line-clamp-3 text-gray-600">
+          <p className="text-sm line-clamp-3 text-gray-600">
             {news.text}
           </p>
         )}
