@@ -36,7 +36,9 @@ async function getNews(slug: string) {
 export default async function NewsDetail({ params }: Props) {
   const { slug } = await params;
   const news = await getNews(slug);
-  console.log(news);
+  const categories = news.categories;
+  const categorySlug = categories[0].slug || "";
+  
   if (!news) {
     notFound();
   }
@@ -90,7 +92,7 @@ export default async function NewsDetail({ params }: Props) {
           </div>
         </div>
         <div className="lg:col-start-10 lg:col-end-13">
-            <RelatedNewsColumn />
+            <RelatedNewsColumn categorySlug={categorySlug} />
         </div>
       </div>
     </section>
