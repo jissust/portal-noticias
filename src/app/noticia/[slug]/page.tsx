@@ -3,6 +3,7 @@ import Image from "next/image";
 import { MarkdownRenderer } from "@/components/ui/markdownRenderer/MarkdownRenderer";
 import { RelatedNewsColumn } from "@/components/ui/RelatedNewsColumn/RelatedNewsColumn";
 import { ShareNews } from "@/components/ui/ShareNews/ShareNews";
+import { Author } from "@/components/ui/Author/Author";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -13,10 +14,9 @@ type Props = {
 };
 
 async function getNews(slug: string) {
-  console.log(API_URL);
   try {
     const res = await fetch(
-      `${API_URL}/api/news?filters[slug][$eq]=${slug}&populate=*`,
+      `${API_URL}/api/news?filters[slug][$eq]=noticia-nueva&populate[author][populate]=*&populate[categories][populate]=*&populate[image][populate]=*`,
       {
         cache: "no-store",
       },
@@ -37,9 +37,11 @@ async function getNews(slug: string) {
 export default async function NewsDetail({ params }: Props) {
   const { slug } = await params;
   const news = await getNews(slug);
+  const author = news.author;
+  
   const categories = news.categories;
   const categorySlug = categories[0].slug || "";
-    console.log(news)
+  
   if (!news) {
     notFound();
   }
@@ -47,6 +49,7 @@ export default async function NewsDetail({ params }: Props) {
   const imageUrl = image.url.startsWith("http")
     ? image.url
     : `${API_URL}${image.url}`;
+
 
   return (
     <section className="w-full py-30">
@@ -77,7 +80,7 @@ export default async function NewsDetail({ params }: Props) {
             </figure>
           )}
           <div className="grid grid-cols-2 pb-5">
-            <span className="font-bold">✍ {news.author.name}</span>
+            <span className="font-bold"></span>
 
             <span className="text-end font-bold">
               📅{" "}
@@ -92,6 +95,8 @@ export default async function NewsDetail({ params }: Props) {
           <div className="text-black">
             <MarkdownRenderer content={news.text} />
           </div>
+          <Author author={author} />
+
         </div>
         <div className="lg:col-start-10 lg:col-end-13">
             <RelatedNewsColumn categorySlug={categorySlug} />
