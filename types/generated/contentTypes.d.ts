@@ -491,7 +491,10 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 80;
+      }>;
     email: Schema.Attribute.Email & Schema.Attribute.Unique;
     facebook: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images' | 'files'>;

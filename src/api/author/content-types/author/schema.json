@@ -25,7 +25,8 @@
       "unique": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "maxLength": 80
     },
     "email": {
       "type": "email",
