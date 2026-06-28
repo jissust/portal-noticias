@@ -5,7 +5,7 @@ import {
   FaInstagram,
   FaTiktok,
   FaYoutube,
-  FaLinkedin  
+  FaLinkedin,
 } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 
@@ -16,7 +16,8 @@ type AuthorTypesProps = {
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const Author = ({ author: author }: AuthorTypesProps) => {
-  const rawUrl = author?.image?.url;
+  console.log(author)
+    const rawUrl = author?.image?.url;
   const imageUrl = rawUrl
     ? rawUrl.startsWith("http")
       ? rawUrl
@@ -24,8 +25,7 @@ export const Author = ({ author: author }: AuthorTypesProps) => {
     : "/images/logo.png";
 
   return (
-    <div className="flex items-center gap-4 w-full">
-      {/* Columna imagen */}
+    <div className="flex items-center gap-4 w-full mt-10">
       <div className="shrink-0">
         <Image
           src={imageUrl}
@@ -38,7 +38,6 @@ export const Author = ({ author: author }: AuthorTypesProps) => {
         />
       </div>
 
-      {/* Columna contenido */}
       <div className="flex flex-col min-w-0 flex-1">
         <span className="text-xs italic text-gray-400">Publicado por:</span>
 
@@ -54,14 +53,42 @@ export const Author = ({ author: author }: AuthorTypesProps) => {
           {author.name}
         </h2>
 
+        {author.description && <div>
+            <p className="italic font-semibold">{ author.description }</p>
+        </div>}
+
         <div className="flex gap-3 mt-2 flex-wrap">
           {/* Iconos redes */}
-          <div><FaFacebook /></div>
-          <div><FaInstagram /></div>
-          <div><FaTiktok  /></div>
-          <div><FaYoutube /></div>
-          <div><FaLinkedin  /></div>
-          <div><BsTwitterX /></div>
+          { author.facebook && <div>
+            <a href={author.facebook} target="_blank">
+              <FaFacebook />
+            </a>
+          </div> }
+          { author.instagram && <div>
+            <a href={author.instagram} target="_blank">
+              <FaInstagram />
+            </a>
+          </div> }
+          { author.tiktok && <div>
+            <a href={author.tiktok} target="_blank">
+              <FaTiktok />
+            </a>
+          </div> }
+          { author.youtube && <div>
+            <a href={author.youtube} target="_blank">
+              <FaYoutube />
+            </a>
+          </div> }
+          { author.linkedin && <div>
+            <a href={author.linkedin} target="_blank">
+              <FaLinkedin />
+            </a>
+          </div> }
+          { author.twitter && <div>
+            <a href={author.twitter} target="_blank">
+              <BsTwitterX />
+            </a>
+          </div> }
         </div>
       </div>
     </div>

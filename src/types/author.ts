@@ -3,9 +3,12 @@ export interface AuthorType {
     name: string,
     email?: string,
     description?: string,
-    Instagram?: string,
-    Twitter?: string,
-    Youtube?: string
+    instagram?: string,
+    twitter?: string,
+    youtube?: string,
+    facebook?: string,
+    tiktok?: string,
+    linkedin?: string,
     image?:{
         url: string
     }
