@@ -31,13 +31,22 @@
       "type": "email",
       "unique": true
     },
-    "Twitter": {
+    "twitter": {
       "type": "string"
     },
-    "Instagram": {
+    "instagram": {
       "type": "string"
     },
-    "Youtube": {
+    "youtube": {
+      "type": "string"
+    },
+    "linkedin": {
+      "type": "string"
+    },
+    "tiktok": {
+      "type": "string"
+    },
+    "facebook": {
       "type": "string"
     }
   }
