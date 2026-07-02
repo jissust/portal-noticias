@@ -7,14 +7,14 @@ import { getLatestVideos } from "@/services/youtube";
 import { TeamTracking } from "@/components/features/home/TeamTracking/TeamTracking";
 
 export default async function Home() {
-  const news = await getLatestNews();
+  const getLatestNewsHome = await getLatestNews({featured: false});
   const featuredNews = await getFeaturedNews();
   const videos = await getLatestVideos(`${process.env.YOUTUBE_CHANNEL_ID}`);
 
   return (
     <>
       <Hero slides={featuredNews} />
-      <LatestNews news={news.slice(0, 3)} />
+      <LatestNews news={getLatestNewsHome.length > 0 ? getLatestNewsHome.slice(0, 3) : getLatestNewsHome} />
       <LatestVideos videos={videos}   />
       <TeamTracking />
     </>
