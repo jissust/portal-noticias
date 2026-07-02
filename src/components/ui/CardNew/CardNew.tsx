@@ -7,10 +7,12 @@ type CardNewProps = {
 };
 
 export const CardNew = ({ new: news }: CardNewProps) => {
+  const category = news?.categories?.[0] ?? null;
   const urlImg = `${process.env.NEXT_PUBLIC_API_URL}${news?.image?.url}`;
+  
   return (
     <Link
-      href={`/noticia/${news.slug || ""}`}
+      href={`/noticias/${category?.slug}/${news.slug || ""}`}
       className="
         group
         flex
@@ -43,9 +45,9 @@ export const CardNew = ({ new: news }: CardNewProps) => {
       </div>
 
       <div className="flex flex-col gap-3 p-5">
-        {news.category && (
+        {category && (
           <span className="text-sm font-semibold uppercase text-gold">
-            {news.category}
+            {category.title}
           </span>
         )}
 
