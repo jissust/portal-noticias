@@ -3,6 +3,7 @@ import { categoryType } from "@/types/category";
 
 import { NewsList } from "../NewsList/NewsList";
 import { CategoryFilter } from "../CategoryFilter/CategoryFilter";
+import { Breadcrumb } from "@/components/ui/Breadcrumb/Breadcrumb";
 
 type NewsArchiveProps = {
   title: string;
@@ -14,7 +15,9 @@ export const NewsArchive = ({ title, news, categories }: NewsArchiveProps) => {
   return (
     <section className="w-full py-40">
       <div className="max-w-7xl mx-auto px-6">
+        <Breadcrumb labels={{}} />
         <div className="grid grid-cols-1 md:grid-cols-2 items-center pb-10">
+          
           <h1 className="text-4xl md:text-6xl font-bold">{title}</h1>
 
           {categories && (

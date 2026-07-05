@@ -5,6 +5,7 @@ import { RelatedNewsColumn } from "@/components/ui/RelatedNewsColumn/RelatedNews
 import { ShareNews } from "@/components/ui/ShareNews/ShareNews";
 import { Author } from "@/components/ui/Author/Author";
 import { CategoryBadge } from "@/components/ui/CategoryBadge/CategoryBadge";
+import { Breadcrumb } from "@/components/ui/Breadcrumb/Breadcrumb";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -57,6 +58,11 @@ export default async function NewsDetail({ params }: Props) {
     <section className="w-full py-30">
       <div className="max-w-7xl mx-auto px-6 gap-8 grid grid-cols-1 lg:grid-cols-12">
         <div className="mx-auto lg:col-start-1 lg:col-end-10">
+          <Breadcrumb labels={{
+            "noticias": "Noticias",
+            [categorySlug]: categories[0].name,
+            [news.slug]: news.title
+          }} />
           <header>
     
             <CategoryBadge category={news.categories[0]} />
