@@ -9,7 +9,7 @@ export const TeamTracking = () => {
 
   return (
     <>
-      <section className="w-full py-20">
+      <section id="estadisticas" className="w-full py-20">
         <div className="max-w-7xl mx-auto px-6">
           <h1 className="text-4xl md:text-7xl font-bold flex justify-center pb-10">
             Estadísticas

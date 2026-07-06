@@ -37,7 +37,7 @@ const socialLinks = [
 
 export const SocialNetworksHome = () => {
   return (
-    <section className="py-20">
+    <section id="redes" className="py-20">
       <div className="max-w-7xl mx-auto px-6">
 
         <h1 className="text-4xl md:text-7xl font-bold flex justify-center pb-10 text-black">
