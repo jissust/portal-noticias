@@ -21,6 +21,7 @@ export default async function CategoryPage({ params }: Props) {
       title={`Noticias: ${categoria}`}
       news={news}
       categories={categories}
+      pagination={{ page: 1, pageCount: 1, total: news.length }}
     />
   );
 }
