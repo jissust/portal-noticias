@@ -3,9 +3,24 @@ import { getCategories } from "@/services/categories";
 
 import { NewsArchive } from "@/components/ui/NewsArchive/NewsArchive";
 
-export default async function NewsPage() {
-  const news = await getLatestNews();
-  const categories = await getCategories();
+type Props = {
+  searchParams: Promise<{
+    page?: string;
+  }>;
+};
 
-  return <NewsArchive title="Noticias" news={news} categories={categories} />;
+export default async function NewsPage({ searchParams }: Props) {
+  const params = await searchParams;
+
+  const page = Number(params.page) || 1;
+
+  const [newsResponse, categories] = await Promise.all([
+    getLatestNews({page, pageSize: 9, featured: false}),
+    getCategories(),
+  ]);
+
+  return (
+    <NewsArchive title="Noticias" news={newsResponse.data} categories={categories} pagination={newsResponse.pagination}
+    />
+  );
 }
