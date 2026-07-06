@@ -4,9 +4,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { FaChevronDown, FaSearch } from "react-icons/fa";
 
 type SelectOption = {
-  id: number | string;
-  slug: string;
-  name: string;
+  id: number;
+  slug?: string;
+  name?: string;
 };
 
 type CustomSelectProps = {
@@ -31,7 +31,7 @@ export const CustomSelect = ({
 
   const filteredOptions = useMemo(() => {
     return options.filter((option) =>
-      option.name.toLowerCase().includes(search.toLowerCase()),
+      option.name?.toLowerCase().includes(search.toLowerCase()),
     );
   }, [options, search]);
 
