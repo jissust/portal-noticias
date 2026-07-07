@@ -1,4 +1,4 @@
-export async function getLatestNews({
+export async function getNews({
   featured,
   page = 1,
   pageSize = 9,

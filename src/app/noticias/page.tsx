@@ -1,4 +1,4 @@
-import { getLatestNews } from "@/services/news";
+import { getNews } from "@/services/news";
 import { getCategories } from "@/services/categories";
 
 import { NewsArchive } from "@/components/ui/NewsArchive/NewsArchive";
@@ -15,7 +15,7 @@ export default async function NewsPage({ searchParams }: Props) {
   const page = Number(params.page) || 1;
 
   const [newsResponse, categories] = await Promise.all([
-    getLatestNews({page, pageSize: 9, featured: false}),
+    getNews({page, pageSize: 9, featured: false}),
     getCategories(),
   ]);
 
