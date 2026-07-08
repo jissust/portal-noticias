@@ -1,4 +1,10 @@
+import { newsMock } from "@/mock/news";
+const USE_MOCKS = process.env.NEXT_PUBLIC_USE_MOCKS === "true";
+
 export async function getFeaturedNews() {
+  if (USE_MOCKS) {
+    return newsMock.data.filter((n) => n.featured);
+  }
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/news?filters[featured][$eq]=true&sort=id:desc&populate=*`,

@@ -1,3 +1,6 @@
+import { newsMock } from "@/mock/news";
+const USE_MOCKS = process.env.NEXT_PUBLIC_USE_MOCKS === "true";
+
 export async function getNews({
   featured,
   page = 1,
@@ -7,6 +10,13 @@ export async function getNews({
   page?: number;
   pageSize?: number;
 } = {}) {
+  if (USE_MOCKS) {
+    return {
+      data: newsMock.data,
+      pagination: newsMock.meta.pagination,
+    };
+  }
+
   let url =
     `${process.env.NEXT_PUBLIC_API_URL}/api/news` +
     `?populate=*` +
@@ -47,6 +57,11 @@ export async function getNews({
 }
 
 export async function getRelatedNewsByCategory(slug: string) {
+  if (USE_MOCKS) {
+    return newsMock.data.filter((news) =>
+      news.categories?.some((c) => c.slug === slug),
+    );
+  }
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/news?filters[categories][slug][$eq]=${slug}&populate=*&sort=id:desc`,
