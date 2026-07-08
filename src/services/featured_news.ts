@@ -1,7 +1,7 @@
 import { newsMock } from "@/mock/news";
 const USE_MOCKS = process.env.NEXT_PUBLIC_USE_MOCKS === "true";
 
-export async function getFeaturedNews() {
+/*export async function getFeaturedNews() {
   if (USE_MOCKS) {
     return newsMock.data.filter((n) => n.featured);
   }
@@ -19,4 +19,4 @@ export async function getFeaturedNews() {
     console.error("Error fetching news:", err);
     return [];
   }
-}
+}*/

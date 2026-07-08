@@ -1,7 +1,7 @@
 import { Hero } from "@/components/features/home/Hero/Hero";
 import { LatestNews } from "@/components/features/home/LatestNews/LatestNews";
 import { getNews } from "@/services/news";
-import { getFeaturedNews } from "@/services/featured_news";
+import { getFeaturedNews } from "@/services/news";
 import { LatestVideos } from "@/components/features/home/LatestVideos/LatestVideos";
 import { getLatestVideos } from "@/services/youtube";
 import { TeamTracking } from "@/components/features/home/TeamTracking/TeamTracking";
