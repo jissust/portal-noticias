@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 
 import { categoryType } from "@/types/category";
-import { NavLinks } from "../Navigation/NavLink";
+import { NavLinks } from "@/components/ui/Navigation/NavLinks";
 
 type Props = {
   categories: categoryType[];

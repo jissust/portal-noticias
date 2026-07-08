@@ -1,4 +1,4 @@
-import { NavLinks } from "@/components/ui/Navigation/NavLink";
+import { NavLinks } from "@/components/ui/Navigation/NavLinks";
 import { SocialNetworks } from "@/components/ui/SocialNetworks/SocialNetworks";
 import { LogoFooter } from "../ui/LogoFooter/LogoFooter";
 import { getCategories } from "@/services/categories";
