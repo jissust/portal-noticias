@@ -23,7 +23,7 @@ services:
       dockerfile: Dockerfile
     container_name: news_platform_strapi
     restart: unless-stopped
-    env_file: .env
+    env_file: ./backend/.env
     volumes:
       - ./volumes/strapi-uploads:/app/public/uploads
     depends_on:
@@ -40,7 +40,7 @@ services:
       args:
         API_URL: ${API_URL}
     env_file:
-      - .env
+      - ./frontend/.env
     container_name: news_platform_frontend
     restart: unless-stopped
     depends_on:
