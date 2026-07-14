@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { MarkdownRenderer } from "@/components/ui/markdownRenderer/MarkdownRenderer";

@@ -1,6 +1,6 @@
+export const dynamic = 'force-dynamic'; 
 import { getRelatedNewsByCategory } from "@/services/news";
 import { getCategories } from "@/services/categories";
-
 import { NewsArchive } from "@/components/ui/NewsArchive/NewsArchive";
 
 type Props = {

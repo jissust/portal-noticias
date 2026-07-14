@@ -1,5 +1,6 @@
 import { newsMock } from "@/mock/news";
 const USE_MOCKS = process.env.NEXT_PUBLIC_USE_MOCKS === "true";
+const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL;
 
 /*export async function getFeaturedNews() {
   if (USE_MOCKS) {

@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { Hero } from "@/components/features/home/Hero/Hero";
 import { LatestNews } from "@/components/features/home/LatestNews/LatestNews";
 import { getNews } from "@/services/news";
@@ -16,8 +17,8 @@ export default async function Home() {
     <>
       <Hero slides={featuredNews} />
       <LatestNews news={getNewsHome.data.length > 0 ? getNewsHome.data.slice(0, 3) : getNewsHome} />
-      <LatestVideos videos={videos}   />
-      <TeamTracking />
+      <LatestVideos videos={videos} /> 
+      <TeamTracking /> 
       <SocialNetworksHome />
     </>
   );

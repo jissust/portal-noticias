@@ -1,5 +1,6 @@
 import { newsMock } from "@/mock/news";
 const USE_MOCKS = process.env.NEXT_PUBLIC_USE_MOCKS === "true";
+const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL;
 
 export async function getNews({
   featured,
@@ -18,7 +19,7 @@ export async function getNews({
   }
 
   let url =
-    `${process.env.NEXT_PUBLIC_API_URL}/api/news` +
+    `${API_URL}/api/news` +
     `?populate=*` +
     `&sort=id:desc` +
     `&pagination[page]=${page}` +
@@ -65,7 +66,7 @@ export async function getRelatedNewsByCategory(slug: string) {
 
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/news?filters[categories][slug][$eq]=${slug}&populate=*&sort=id:desc`,
+      `${API_URL}/api/news?filters[categories][slug][$eq]=${slug}&populate=*&sort=id:desc`,
     );
     if (!res.ok) {
       console.error("Error API noticias:", res.status);
@@ -86,7 +87,7 @@ export async function getNewsDetail(slug: string) {
 
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/news?filters[slug][$eq]=${slug}&populate[author][populate]=*&populate[categories][populate]=*&populate[image][populate]=*`,
+      `${API_URL}/api/news?filters[slug][$eq]=${slug}&populate[author][populate]=*&populate[categories][populate]=*&populate[image][populate]=*`,
       {
         cache: "no-store",
       },
@@ -110,7 +111,7 @@ export async function getFeaturedNews() {
   }
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/news?filters[featured][$eq]=true&sort=id:desc&populate=*`,
+      `${API_URL}/api/news?filters[featured][$eq]=true&sort=id:desc&populate=*`,
     );
     if (!res.ok) {
       console.error("Error API noticias:", res.status);

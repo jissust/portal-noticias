@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { getNews } from "@/services/news";
 import { getCategories } from "@/services/categories";
 
