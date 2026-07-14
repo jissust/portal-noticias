@@ -1,0 +1,19 @@
+# Este archivo se aplica AUTOMÁTICAMENTE al correr `docker compose up`
+# Pensado para desarrollo LOCAL: dominios .local, sin SSL de Let's Encrypt
+
+services:
+  strapi:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy-network"
+      - "traefik.http.routers.strapi.rule=Host(`admin.noticias.local`)"
+      - "traefik.http.routers.strapi.entrypoints=web"
+      - "traefik.http.services.strapi.loadbalancer.server.port=1337"
+
+  frontend:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy-network"
+      - "traefik.http.routers.frontend.rule=Host(`noticias.local`)"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.services.frontend.loadbalancer.server.port=3000"

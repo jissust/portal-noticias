@@ -1,0 +1,26 @@
+# Frontend
+frontend/node_modules/
+frontend/.next/
+
+# Strapi
+strapi/node_modules/
+strapi/dist/
+strapi/build/
+strapi/.tmp/
+strapi/.cache/
+
+# Infra — datos que NO deben versionarse
+volumes/postgres-data/*
+volumes/strapi-uploads/*
+!volumes/postgres-data/.gitkeep
+!volumes/strapi-uploads/.gitkeep
+backups/*.sql
+
+# Secrets
+.env
+.env.local
+.env.*.local
+
+# OS / editor
+.DS_Store
+.vscode/
