@@ -4,16 +4,12 @@
 services:
   strapi:
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.strapi.rule=Host(`admin.tudominio.com`)"
-      - "traefik.http.routers.strapi.entrypoints=websecure"
-      - "traefik.http.routers.strapi.tls.certresolver=letsencrypt"
-      - "traefik.http.services.strapi.loadbalancer.server.port=1337"
+    - "traefik.enable=true"
+    - "traefik.http.routers.strapi.rule=Host(`45.93.136.220`) && PathPrefix(`/admin`)"
+    - "traefik.http.routers.strapi.entrypoints=web"
 
   frontend:
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`tudominio.com`)"
-      - "traefik.http.routers.frontend.entrypoints=websecure"
-      - "traefik.http.routers.frontend.tls.certresolver=letsencrypt"
-      - "traefik.http.services.frontend.loadbalancer.server.port=3000"
+    - "traefik.enable=true"
+    - "traefik.http.routers.frontend.rule=Host(`45.93.136.220`)"
+    - "traefik.http.routers.frontend.entrypoints=web"
