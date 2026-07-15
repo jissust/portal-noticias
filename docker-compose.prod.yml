@@ -2,7 +2,7 @@ services:
   strapi:
     labels:
     - "traefik.enable=true"
-    - "traefik.http.routers.strapi.rule=Host(`45.93.136.220`) && PathPrefix(`/admin`)"
+    - "traefik.http.routers.strapi.rule=Host(`api.45-93-136-220.sslip.io`)"
     - "traefik.http.routers.strapi.entrypoints=web"
     - "traefik.http.services.strapi.loadbalancer.server.port=1337"
     - "traefik.docker.network=proxy-network"
@@ -10,5 +10,5 @@ services:
   frontend:
     labels:
     - "traefik.enable=true"
-    - "traefik.http.routers.frontend.rule=Host(`45.93.136.220`)"
+    - "traefik.http.routers.frontend.rule=Host(`app.45-93-136-220.sslip.io`)"
     - "traefik.http.routers.frontend.entrypoints=web"
