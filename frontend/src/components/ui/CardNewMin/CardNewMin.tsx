@@ -2,12 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { News } from "@/types/news";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 type CardNewProps = {
   new: News;
 };
 
 export const CardNewMin = ({ new: news }: CardNewProps) => {
-  const urlImg = `${process.env.NEXT_PUBLIC_API_URL}${news?.image?.url}`;
+    const image = news.image ?? null;
+
+  const imageUrl =
+    image?.url
+      ? image.url.startsWith("http")
+        ? image.url
+        : `${API_URL}${image.url}`
+      : null;
+
   return (
     <Link
       href={`/noticia/${news.slug || ""}`}
@@ -25,10 +35,11 @@ export const CardNewMin = ({ new: news }: CardNewProps) => {
         mb-4
       "
     >
-      <div className="relative w-[30%] overflow-hidden">
+
+      { imageUrl && (<div className="relative w-[30%] overflow-hidden">
         <Image
           key={news.id}
-          src={urlImg}
+          src={imageUrl}
           alt={news.title || ""}
           fill
           unoptimized
@@ -39,7 +50,7 @@ export const CardNewMin = ({ new: news }: CardNewProps) => {
             group-hover:scale-105
           "
         />
-      </div>
+      </div>)}
 
       <div className="flex flex-col gap-3 p-4 w-[70%]">
         {news.category && (
