@@ -28,10 +28,15 @@ export default async function NewsDetail({ params }: Props) {
   if (!news) {
     notFound();
   }
-  const image = news.image;
-  const imageUrl = image.url.startsWith("http")
-    ? image.url
-    : `${API_URL}${image.url}`;
+
+  const image = news.image ?? null;
+
+  const imageUrl =
+    image?.url
+      ? image.url.startsWith("http")
+        ? image.url
+        : `${API_URL}${image.url}`
+      : null;
 
 
   return (
@@ -55,7 +60,7 @@ export default async function NewsDetail({ params }: Props) {
             {news.descent}
           </h2>
           <ShareNews title={news.title} url={API_URL+"/noticia/"+news.slug} />
-          {image && (
+          {imageUrl && (
             <figure className="my-4 relative w-full">
               <Image
                 width={500}
